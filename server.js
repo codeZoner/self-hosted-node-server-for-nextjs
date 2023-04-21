@@ -13,7 +13,6 @@
  * Import all required modules
  */
 // If using non-ssl port replace https module with http module
-// const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const { parse } = require('url');
@@ -22,7 +21,7 @@ const next = require('next');
 /**
  * Set the sub domain for the site
  */
-const subDomain = 'customnextserver.aritsltd.com';
+const subDomain = 'www.example.com';
 
 /**
  * Using Default SSL port to access the site over 
@@ -84,7 +83,6 @@ app.prepare().then(() => {
      * This ensures that the request and response objects (req and res) are available when handling incoming requests. 
      * If using non-ssl replace with http module
     */
-    // http.createServer(async (req, res) => {
     https.createServer(sslConfig, async (req, res) => {
         try {
             /** 
@@ -100,31 +98,14 @@ app.prepare().then(() => {
             */
             await handle(req,res,parsedUrl);
             
-            /** 
-             **************************************************************
-             * Indent the code below if you are using custom routing logic and 
-             * comment out the handle() function above
-            **************************************************************
-             * Route the request based on the pathname and redirect 
-             * Remove if you are not suing custom routing logic
-            */
-
-            // const { pathname, query } = parsedUrl;
-            // if (pathname === '/a') {
-            //     /**
-            //      * The app.render() function is a part of the Next.js framework,
-            //      * and it is used to render a specific page on the server side.
-            //      * This function is useful when you want to handle custom routing logic in the Next.js application.
-            //      */
-            //     await app.render(req, res, '/a', query);
-            // } else {
-            //     /**
-            //      * If pathname is not match, use the handle method to process the request
-            //      */
-            //     await handle(req, res, parsedUrl);
-            // }
-            
-            
+            const { pathname, query } = parsedUrl
+            if (pathname === '/a') {
+                await app.render(req,res,'/a',query);
+            } else if (pathname === '/b') {
+                await app.render(req, res, '/b', query)
+            } else {
+                await handle(req,res,parsedUrl);
+            }
         } catch (err) {
             /**
              * Log the error and respond with an internal server error message
