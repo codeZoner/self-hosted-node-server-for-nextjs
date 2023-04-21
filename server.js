@@ -31,7 +31,7 @@ const subDomain = 'customnextserver.aritsltd.com';
  * you will need to specify the port number in the URL
  * Example - https://subdomain.domain.com:8080
 */
-const port = 442;
+const port = 443;
 
 /*
  *************************************************************
