@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,6 +41,17 @@ export default function Home() {
           height={37}
           priority
         />
+        <Link href="/subpage">
+          <a className="absolute z-10 flex place-items-center gap-2 p-8 bg-white rounded-full shadow-lg dark:bg-zinc-800/30">
+            <span className="text-2xl font-bold">Go to Subpage</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false" role="img"
+            >
+              <path fillRule="evenodd" d="M4.293 7.293a1 1 0 011.414 0L10 11.586l4.293-4.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
+        </Link>
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
