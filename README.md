@@ -1,5 +1,5 @@
 
-# Self Host NextJS 12/13 app with Node & SSL Termination
+# Self Hosted NextJS 12/13 app with Node & SSL Termination
 There are a multiple approaches on how to deploy NextJs Apps on self hosted server. This repo, we will be using a server.js file with next module to handle the requests. 
 
 --- 
